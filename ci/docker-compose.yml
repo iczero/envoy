@@ -7,6 +7,11 @@ x-envoy-build-base: &envoy-build-base
   stdin_open: true
   tty: true
   platform: ${ENVOY_DOCKER_PLATFORM:-}
+  deploy:
+    resources:
+      limits:
+        pids: -1
+  userns_mode: keep-id
   environment:
   # Core build environment
   - BUILD_DIR=/build
